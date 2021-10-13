@@ -1,0 +1,49 @@
+html {
+    height: 100%;
+}
+
+body {
+    height: 100%;
+    margin: 0;
+    font-family: Arial, Helvetica;
+    display: grid;
+    justify-items: center;
+    align-items: center;
+    background-color: white;
+}
+
+#profile {
+    margin: auto;
+    margin-top: 50px;
+    height: 500px;
+    width: 400px;
+}
+
+table {
+    width: 400px;
+    height: 250px;
+}
+
+table tr td {
+    background: white;
+    border: 1px solid white;
+    height: 50px;
+    font-family: Cuprum;
+    font-size: 25px;
+    color: gray;
+    text-align: center;
+}
+
+#profile table tr td.button {
+    background-color: gray;
+    border: none;
+}
+
+#change_button {
+    width: 100%;
+    padding: 7px;
+    border: none;
+    color: white;
+    font-weight: bold;
+    background-color: black;
+}
