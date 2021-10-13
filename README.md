@@ -1,7 +1,7 @@
 # MoveoLoginPage
 
 ## Description
-The project is about building a login and profile pages for of a website.
+The project is about building a login and profile pages for a website.
 
 ## Database Content
 ### Users info:
@@ -12,11 +12,11 @@ The project is about building a login and profile pages for of a website.
 * valeryh@gmail.com			password: val1234
 
 ## Login Page
-* The login page have a place to enter email and password for connecting.
+* The login page has a place to enter email and password for connecting.
 * After pressing the login button it checks for valid email(by regexp) and password(6 chars with a number and a letter),
-* After the page connects to the FirebaseAuth to verify that the email exists and the user entered the correct password. 
-* If the email or password is not valid error massage pops up. 
-* If the email dosent exists or the password is not correct error massage pops up.
+* Then the page connects to the FirebaseAuth to verify that the email exists and the user entered the correct password. 
+* If the email or password is not valid error message pops up. 
+* If the email dosent exists or the password is not correct error message pops up.
 * After entering the right information the user being directed to the profile page.
 
 ## Profile Page
@@ -27,4 +27,4 @@ Pressing the logout button will direct the user back to the login page for recon
 
 ## Authentication
 The way that the login page is authenticat the email and password is by sending them to the FirebaseAuth.
-The login page will resive back if the information exists or not and if the information is correct.
+The login page will recieve back if the information exists or not and if the information is correct.
