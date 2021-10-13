@@ -12,7 +12,7 @@
 	 <button type="button" id="logout">Log Out</button>
     <h2>Personal Information</h2>
     <script type="module">
-           // Import the functions you need from the SDKs you need
+        // Import the functions you need from the SDKs you need
 		import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-app.js";
 		import { getFirestore, doc, getDoc, runTransaction  } from "https://www.gstatic.com/firebasejs/9.1.2/firebase-firestore.js";
 		// TODO: Add SDKs for Firebase products that you want to use
@@ -28,7 +28,6 @@
 
 		// Initialize Firebase
 		const firebase = initializeApp(firebaseConfig);
-		
 		const db = getFirestore();
 		const docRef = doc(db, "users", localStorage.userId);
 		const docSnap = await getDoc(docRef);
@@ -38,68 +37,48 @@
 		  userProfile = docSnap.data();
 		  document.getElementById("email").innerHTML = userProfile.email;
 		  document.getElementById("name").value = userProfile.name;
-		    document.getElementById("birthdate").value = userProfile.birthdate;
+		  document.getElementById("birthdate").value = userProfile.birthdate;
 		  document.getElementById("address").value = userProfile.address;
 		} else {
 		  alert("error in fetching user profile!");
 		}
-		
-		
-		
-		
-		
 		const logoutButton = document.getElementById("logout");
 		const saveButton = document.getElementById("save");
-
-
-
-logoutButton.addEventListener("click", (e) => {
-    e.preventDefault();
-	
-	localStorage.userId = null;
-	location.href = "login.html";
-	
- });
+		
+		//LIstener to tje logout button, if pressed deleting the localStorage and directing to the login page.
+		logoutButton.addEventListener("click", (e) => {
+			e.preventDefault();
+			localStorage.userId = null;
+			location.href = "login.html";
+		});
  
- saveButton.addEventListener("click", async function callback(e) {
-    e.preventDefault();
+		saveButton.addEventListener("click", async function callback(e) {
+		e.preventDefault();
 	
-
-	var nameValue = document.getElementById("name").value;
-	var addressValue = document.getElementById("address").value;
-	var birthdateValue = document.getElementById("birthdate").value;
-	const db = getFirestore();
-	const docRef = doc(db, "users", localStorage.userId);
-
-	const newProfileData = await runTransaction(db, async (transaction) => {
+		var nameValue = document.getElementById("name").value;
+		var addressValue = document.getElementById("address").value;
+		var birthdateValue = document.getElementById("birthdate").value;
+		const db = getFirestore();
+		const docRef = doc(db, "users", localStorage.userId);
+		
+		//Waiting for geting all the information to display.
+		const newProfileData = await runTransaction(db, async (transaction) => {
 		const sfDoc = await transaction.get(docRef);
 		if (!sfDoc.exists()) {
 		  alert("Error in saving user details!");
 		}
 
-		transaction.update(docRef, {name: nameValue, address: addressValue, birthdate: birthdateValue});
-		var x = 9;
-	});
-
- });
+		transaction.update(docRef, {name: nameValue, address: addressValue, birthdate: birthdateValue});//After pressing save updating the new data to the Firebase.
+		});
+		});
     </script>
-
     <div id="profile">
-       Email: <span id="email"></span><br>
-	   Password: <span id="password">*******</span><br>
-		
-			Name: <input type="input" name="name" id="name" class="login_form_field" ><br>
-		   Address: <input type="input" name="address" id="address" class="login_form_field" ><br>
-            Birthdate<input type="input" name="birthdate" id="birthdate" class="login_form_field" ><br>
-			 
-            <button type="button"  id="save">Save!</button>
-       
-
-        
-
-
-
+        Email: <span id="email"></span><br>
+	    Password: <span id="password">*******</span><br>
+		Name: <input type="input" name="name" id="name" class="login_form_field" ><br>
+		Address: <input type="input" name="address" id="address" class="login_form_field" ><br>
+        Birthdate<input type="input" name="birthdate" id="birthdate" class="login_form_field" ><br>
+        <button type="button"  id="save">Save!</button>
     </div>
 </body>
-
 </html>
